@@ -1,0 +1,52 @@
+.todo-form {
+  border: 1px solid red;
+  padding: 20px 20px 10px 20px;
+
+  &__item {
+    display: flex;
+    border-bottom: 1px solid;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+
+    .name {
+      width: 15%;
+    }
+
+    .phone {
+      width: 20%;
+    }
+
+    .text {
+      width: 60%;
+    }
+  }
+  &__btn-block {
+    display: flex;
+  }
+  &__btn-delete {
+    @include font(15px, 15px);
+    background-color: red;
+    color: white;
+    margin-left: 5px;
+  }
+
+  &__btn-pen {
+    background-color: yellow;
+    margin-left: 5px;
+  }
+
+  @include media-down($sm) {
+    padding: 10px;
+    &__item {
+      display: block;
+
+      & > div {
+        margin-bottom: 10px;
+        width: 100% !important;
+      }
+    }
+    &__btn-block {
+      justify-content: end;
+    }
+  }
+}

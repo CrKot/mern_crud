@@ -1,0 +1,41 @@
+.todo-input {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid black;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.75);
+  &__fields {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  &__field {
+    width: 50%;
+    input {
+      width: calc(100% - 30px);
+    }
+    .text {
+      width: fit-content;
+      margin-bottom: 5px;
+      transition: .3s;
+      background-size: 0 5px;
+      background-repeat: no-repeat;
+      background-position: center 100%;
+    }
+    &.textarea {
+      width: 100%;
+      .textarea {
+        width: 750px;
+        max-width: 750px;
+        min-height: 50px;
+      }
+    }
+    &:hover {
+      .text {
+        background-image: linear-gradient(0deg, red, red);
+        background-size: 100% 3px;
+      }
+    }
+  }
+  &__btn {
+    align-self: end;
+  }
+}
