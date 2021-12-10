@@ -36,10 +36,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
+.idea
 .next
 node_modules
 package-lock.json
-/server/node_modules
-/server/.env
-/server/package-lock.json
+./server/dist
+./server/.idea
+./server/node_modules
+./server/.env
+./server/package-lock.json
 
