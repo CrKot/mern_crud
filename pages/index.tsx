@@ -1,12 +1,28 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+import { Post } from '../types/post'
 
-import { TopBar} from "../components/TopBar";
+import { TopBar } from "../components/TopBar";
 import { ToDoInput } from "../components/ToDoInput"
-import { ToDoForm} from "../components/ToDoForm";
+import { ToDoPost } from "../components/ToDoPost";
+import { useState } from "react";
 
 const Home: NextPage = () => {
+
+  const addPost = (post) => {
+    post.id = new Date()
+    data.push(post)
+    setData([...data])
+  }
+  const editItem = (id: number) => {
+    // editingItem({})
+  }
+
+  const removeItem = (id: number): void => {
+    setData(data.filter((item: Post) => item.id !== id))
+  }
+
+  const [data, setData] = useState([])
   return (
     <div>
       <Head>
@@ -19,8 +35,8 @@ const Home: NextPage = () => {
         </header>
 
       <main className='container'>
-        <ToDoInput />
-        <ToDoForm />
+        <ToDoInput addPost={addPost} editingItem={editingItem}/>
+        <ToDoPost data={data} editItem={editItem} removeItem={removeItem}/>
       </main>
 
       <footer className=''>

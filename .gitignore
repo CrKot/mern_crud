@@ -38,3 +38,8 @@ yarn-error.log*
 
 .next
 node_modules
+package-lock.json
+/server/node_modules
+/server/.env
+/server/package-lock.json
+
