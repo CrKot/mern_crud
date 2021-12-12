@@ -1,7 +1,8 @@
 import { NextPage } from "next";
-import { Post } from '../types/post'
+import { Post } from '../types/post';
+import { PropsPost } from '../types/props'
 
-export const ToDoPost: NextPage = ({data, editItem, removeItem}) => {
+export const ToDoPost: NextPage<PropsPost> = ({ data, editItem, removeItem }) => {
   return (
     <div className='todo-post'>
       {data && data.map((item: Post) => {
@@ -16,7 +17,7 @@ export const ToDoPost: NextPage = ({data, editItem, removeItem}) => {
                 onClick={ () => removeItem(item.id) }
               >X
               </button>
-              <button className='todo-post__btn-pen btn' onClick={ () => editItem(item.id)}>
+              <button className='todo-post__btn-pen btn' onClick={ () => editItem(item.id) }>
                 <img src='pen.svg' alt=''/>
               </button>
             </div>

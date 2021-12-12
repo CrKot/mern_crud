@@ -10,10 +10,10 @@ interface PostInterface {
   phone: string,
   text: string
 }
-
+// пофиксить
 export class Post {
   static async getFormsList(req: Request, res: Response): Promise<void> {
-    PostModel.find()
+    const posts = PostModel.find().exec()
       .then((posts: Array<IPost>) => res.send(posts))
       .catch(() => res.send(errorMap.getFail))
 

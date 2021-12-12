@@ -1,25 +1,22 @@
 import { NextPage } from "next";
-import React, { useState} from "react";
-import {number} from "prop-types";
+import React, { useEffect, useState } from "react";
+import { Post, CreatePost } from '../types/post'
+import { PropsInput } from '../types/props'
 
-interface Post {
-  name: string,
-  phone: string,
-  text: string
-}
-
-export const ToDoInput: NextPage = ({addPost, editingItem = null}) => {
+export const ToDoInput: NextPage<PropsInput> = ({ addPost, editingItem }) => {
   const [post, setPost] = useState({
-    id: number,
-    name: '' as string,
-    phone: '' as string,
-    text: '' as string
+    name: '',
+    phone: '',
+    text: ''
+  } as Post)
+
+  useEffect(() => {
+    if (editingItem) {
+      setPost(editingItem)
+    }
   })
-  if (editingItem) {
-    setPost(editingItem)
-  }
   const handlePost = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-    const fieldName = event.target.name as keyof Post
+    const fieldName = event.target.name as keyof CreatePost
     post[fieldName] = event.target.value
       setPost({...post})
   }
@@ -34,6 +31,7 @@ export const ToDoInput: NextPage = ({addPost, editingItem = null}) => {
               onChange={handlePost}
               value={post.name}
               name='name'
+              required={true}
               placeholder='Введите имя'
               maxLength={20}
             />
@@ -44,6 +42,7 @@ export const ToDoInput: NextPage = ({addPost, editingItem = null}) => {
               onChange={handlePost}
               value={post.phone}
               name='phone'
+              required={true}
               placeholder='Введите телефон'
               maxLength={13}
             />
@@ -61,7 +60,7 @@ export const ToDoInput: NextPage = ({addPost, editingItem = null}) => {
                 name: '',
                 phone: '',
                 text: ''
-              })
+              } as Post)
             }}>
               <img src="success.svg" alt=""/>
             </button>
