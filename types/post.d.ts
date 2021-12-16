@@ -1,9 +1,6 @@
-export interface CreatePost {
+export interface Post {
+  _id: string,
   name: string,
   phone: string,
   text: string
-}
-
-export interface Post extends CreatePost {
-  id: number
 }

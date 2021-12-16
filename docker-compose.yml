@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  front:
+    build: ./
+    container_name: front
+    ports:
+      - "3000:3000"
+    depends_on:
+      - back
+  back:
+    build: ./server/
+    container_name: back
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:latest
+    hostname: mongodb
+    container_name: mongodb
+    restart: always
+    env_file:
+      - .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+      MONGO_INITDB_DATABASE: ${DB_DATABASE}
+    ports:
+      - "27017:27017"

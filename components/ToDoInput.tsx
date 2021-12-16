@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import React, { useEffect, useState } from "react";
-import { Post, CreatePost } from '../types/post'
+import { Post } from '../types/post'
 import { PropsInput } from '../types/props'
 
 export const ToDoInput: NextPage<PropsInput> = ({ addPost, editingItem }) => {
@@ -16,7 +16,7 @@ export const ToDoInput: NextPage<PropsInput> = ({ addPost, editingItem }) => {
     }
   })
   const handlePost = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-    const fieldName = event.target.name as keyof CreatePost
+    const fieldName = event.target.name as keyof Post
     post[fieldName] = event.target.value
       setPost({...post})
   }

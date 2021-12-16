@@ -17,9 +17,9 @@ app.use(cors({
   credentials: true
 }));
 
-app.use('/api', post)
+app.use(post)
 
-// connectMongoose() as Promise<void>
+connectMongoose()
 
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`)

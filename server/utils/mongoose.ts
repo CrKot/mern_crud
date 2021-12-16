@@ -1,8 +1,9 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-export const connectMongoose = async ()=> {
+export const connectMongoose = async (): Promise<void> => {
 
- await mongoose.connect(process.env.DB_CONNECTION, {
+ // @ts-ignore
+  await mongoose.connect(process.env.DB_CONNECTION, {
    auth: {
      authdb: process.env.DB_NAME,
      username: process.env.DB_USER,

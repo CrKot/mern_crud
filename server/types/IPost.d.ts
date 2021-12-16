@@ -1,7 +1,7 @@
 import {Document} from "mongoose";
 
 interface IPost extends Document {
-  id: number,
+  _id: string,
   name: string,
   phone: string,
   text: string
